@@ -188,12 +188,25 @@
 
 		$(".submit").on("click", function(event) {
 		      event.preventDefault();
-		      var test = $("#q0").val()
-		      console.log(test);
+		      var a0 = $("#q0").val();
+		      var a1 = $("#q1").val();
+		      var a2 = $("#q2").val();
+		      var a3 = $("#q3").val();
+		      var a4 = $("#q4").val();
+		      var a5 = $("#q5").val();
+		      var a6 = $("#q6").val();
+		      var a7 = $("#q7").val();
+		      var a8 = $("#q8").val();
+		      var a9 = $("#q9").val();
+		      var newFriend = [a0,a1,a2,a3,a4,a5,a6,a7,a8,a9]
+		      console.log(newFriend);
+
+		      $.post("/api/friends", newFriend, function(data) {
+		      	alert(data);
+		      });
+
 		});
-		// var newUser = {
-		// 	name: 
-		// }
+
 
 
 

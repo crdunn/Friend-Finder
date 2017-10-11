@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //pulls in the routing commands from the nested folder
-//require("./routing/apiRoutes")(app);
+require("./app/routing/apiRoutes")(app);
 require("./app/routing/htmlRoutes")(app);
 
 app.listen(PORT, function() {
