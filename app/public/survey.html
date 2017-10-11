@@ -4,6 +4,7 @@
 	<title>survey</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- 	<link rel="stylesheet" type="text/css" href="style.css"> -->
 </head>
 <body>
 	
@@ -24,7 +25,7 @@
 				    </select>
 				  </div>
 				</div>
-			</div><br>
+			</div>
 
 			<div class="card col-10">
 				<div class="card-header">
@@ -185,6 +186,9 @@
 
 </body>
 	<script>
+		var friendArray = [];
+		var choiceIndex = 0;
+		var newFriend = []
 		//Once the submit button is clicked, the user's responses are found by jQuery and then placed in an array to be exported for the logic to use
 		$(".submit").on("click", function(event) {
 		      event.preventDefault();
@@ -198,16 +202,54 @@
 		      var a7 = $("#q7").val();
 		      var a8 = $("#q8").val();
 		      var a9 = $("#q9").val();
-		      var newFriend = [a0,a1,a2,a3,a4,a5,a6,a7,a8,a9]
-		      console.log(newFriend);
+		      newFriend = [a0,a1,a2,a3,a4,a5,a6,a7,a8,a9]
+		      //console.log(newFriend);
 
-		      $.post("/api/friends", newFriend, function(data) {
-		      	alert(data);
-		      });
-
+		      // $.post("/api/friends", newFriend, function(data) {
+		      // 	alert(data);
+		      // });
+		      findBest();
 		});
 
+		$.get("/api/friends", function(res,req){
+			friendArray = res;
+		});
 
+		//this function correctly compares two arrays and finds the best match between them.
+		function findBest(){
+			var diffArray = [];
+			var total = 0;
+			var totalArray = [];
+			//This for loop iterates through all of the avaiable friends
+			for (var j = 0; j < friendArray.length; j++){
+				var scoresArray = friendArray[j].scores
+				//this for loop finds the absolute value of the difference between each element in the user's scores and the potential friends' scores
+				for (var i = 0; i < newFriend.length; i++){
+					diffArray[i] = Math.abs(newFriend[i] - scoresArray[i]);
+					
+				};
+				//this loop add up the differences into one number
+				for (var k = 0; k < diffArray.length; k++){
+					total += diffArray[k];
+				};
+				//totalArray stores the total difference between the user and the potential friends at the same index
+				totalArray[j] = total;
+				//here, I reset the total variable to zero at the end of the loop
+				total = 0
+			};
+			//this checks the entire total array and finds the smallest elementand returns it.  That is the potential firends with the smallest difference with the user.
+			for (var l = 1; l < totalArray.length; l++){
+				var p = l-1;
+				if (totalArray[l] < totalArray[p]){
+					choiceIndex = l;
+				}else {
+					choiceIndex = p;
+				};
+
+			};
+			console.log(choiceIndex);
+			alert("Your new friend is "+friendArray[choiceIndex].name);
+		};
 
 
 
