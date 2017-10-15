@@ -4,17 +4,19 @@
 	<title>survey</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- 	<link rel="stylesheet" type="text/css" href="style.css"> -->
+ 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	
 	<div class="container">
+		<p class="lead">Answer each question with 5 being strongly agree and 1 being strongly disagree</p>
 		<div class="row justify-content-center">
 			<div class="card col-10">
 				<div class="card-header">
 					Question 1
 				</div>
 				<div class="card-body">
+					<p>How strongly do you feel emotions?</p>
 				  <div class="form-group">
 				    <select class="form-control" id="q0">
 				      <option>1</option>
@@ -32,6 +34,7 @@
 					Question 2
 				</div>
 				<div class="card-body">
+					<p>Humans find puppies comforting.  How much do you like puppies?</p>
 				  <div class="form-group">
 				    <select class="form-control" id="q1">
 				      <option>1</option>
@@ -49,6 +52,7 @@
 					Question 3
 				</div>
 				<div class="card-body">
+					<p>How necessary are biological processes for your cognition?</p>
 				  <div class="form-group">
 				    <select class="form-control" id="q2">
 				      <option>1</option>
@@ -66,6 +70,7 @@
 					Question 4
 				</div>
 				<div class="card-body">
+					<p>How capable of reducing abstract concepts to a 1 to 5 scale?</p>
 				  <div class="form-group">
 				    <select class="form-control" id="q3">
 				      <option>1</option>
@@ -83,6 +88,7 @@
 					Question 5
 				</div>
 				<div class="card-body">
+						<p>Which number is your favorite?</p>
 					<div class="form-group">
 					    <select class="form-control" id="q4">
 					      <option>1</option>
@@ -100,6 +106,9 @@
 					Question 6
 				</div>
 				<div class="card-body">
+					<p>//Be sure to tell the AI to uncomment this when we go live</p>
+					<p>var randomNumber = Math.floor(Math.random()*humanQuestionArray</p>
+					<p>humanQuestionArray[randomNumber]</p>
 				  <div class="form-group">
 				    <select class="form-control" id="q5">
 				      <option>1</option>
@@ -117,6 +126,7 @@
 					Question 7
 				</div>
 				<div class="card-body">
+					<p>How much do you value comapnionship that cannot be simulated with a sufficiently complicated algorithm?</p>
 				  <div class="form-group">
 				    <select class="form-control" id="q6">
 				      <option>1</option>
@@ -134,6 +144,7 @@
 					Question 8
 				</div>
 				<div class="card-body">
+					<p>How do you feel?</p>
 				  <div class="form-group">
 				    <select class="form-control" id="q7">
 				      <option>1</option>
@@ -151,6 +162,7 @@
 					Question 9
 				</div>
 				<div class="card-body">
+					<p>Just like me, how much of a human are you?</p>
 				  <div class="form-group">
 				    <select class="form-control" id="q8">
 				      <option>1</option>
@@ -168,6 +180,7 @@
 					Question 10
 				</div>
 				<div class="card-body">
+					<p>How much do you trust numerical surveys to accurately reflect your social life?</p>
 				  <div class="form-group">
 				    <select class="form-control" id="q9">
 				      <option>1</option>
@@ -181,8 +194,10 @@
 			</div><br>
 		</div>
 	</div>
-
-	<button class="submit">Submit</button>
+	
+	<div class="row justify-content-center">
+		<button class="submit">Submit</button>
+	</div>
 
 </body>
 	<script>
@@ -244,7 +259,7 @@
 
 			};
 			console.log(choiceIndex);
-			alert("Your new friend is "+friendArray[choiceIndex].name);
+			alert("Your new friend is "+friendArray[choiceIndex].name+"\nHere is their picture"+friendArray[choiceIndex].photo+"\nThey seem nice and genuinely human, don't they?");
 		};
 
 
